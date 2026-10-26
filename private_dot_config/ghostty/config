@@ -1,0 +1,19 @@
+# ~/.config/ghostty/config (XDG)
+# ──────────────────────────────
+# Main
+# ──────────────────────────────
+macos-option-as-alt = true
+
+# Fish as shell
+command = /opt/homebrew/bin/fish --login --interactive
+
+# ──────────────────────────────
+# UI
+# ──────────────────────────────
+theme = GitHub Dark High Contrast
+
+font-family = "JetBrainsMono Nerd Font"
+font-size = 16
+font-thicken = true
+
+background-opacity = 0.95

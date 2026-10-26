@@ -1,0 +1,130 @@
+# ~/.config/aerospace/aerospace.toml
+# Idiomatic AeroSpace 0.21 config (based on the official default, trimmed for daily use)
+# Docs: https://nikitabobko.github.io/AeroSpace/guide
+
+config-version = 2
+
+start-at-login = true
+# After enabling, reload once manually so auto-reload starts watching the file
+auto-reload-config = true
+
+# Comfortable gaps without wasting screen space
+gaps.inner.horizontal = 8
+gaps.inner.vertical = 8
+gaps.outer.left = 8
+gaps.outer.right = 8
+gaps.outer.top = 8
+gaps.outer.bottom = 8
+
+# Default tiling layout
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
+# Do not keep empty workspaces alive (config-version = 2 default)
+persistent-workspaces = []
+
+# Keyboard-first: mouse does not steal focus
+focus-follows-mouse.enabled = false
+
+# On multi-monitor setups, park the cursor on the newly focused display
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+key-mapping.preset = 'qwerty'
+
+[mode.main.binding]
+# Focus (vim-like)
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+
+# Move window
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+# Layouts
+# Prefer explicit accordion axes over the default alt-comma toggle
+alt-s = 'layout v_accordion'
+alt-w = 'layout h_accordion'
+alt-t = 'layout tiles horizontal vertical'
+# AeroSpace maximize in place (idiomatic; stays on the same workspace)
+alt-f = 'fullscreen --no-outer-gaps'
+# macOS green-button fullscreen (separate Space) — use sparingly
+alt-shift-f = 'macos-native-fullscreen'
+
+# Resize the focused node
+alt-minus = 'resize smart -50'
+alt-equal = 'resize smart +50'
+
+# Workspaces (numbers only — letter workspaces omitted on purpose)
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+
+# Move window to workspace and follow it
+alt-shift-1 = 'move-node-to-workspace 1; workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2; workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3; workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4; workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5; workspace 5'
+
+# Jump between the two most recent workspaces
+alt-tab = 'workspace-back-and-forth'
+# Move the current workspace to the next monitor (multi-display)
+alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+
+# Open Ghostty (i3-style)
+alt-enter = '''exec-and-forget open -a Ghostty'''
+
+# Service mode
+alt-shift-semicolon = 'mode service'
+
+[mode.service.binding]
+esc = ['reload-config', 'mode main']
+r = ['flatten-workspace-tree', 'mode main']          # reset layout tree
+f = ['layout floating tiling', 'mode main']          # toggle float/tile
+backspace = ['close-all-windows-but-current', 'mode main']
+
+# Join the focused window with a neighbor
+alt-shift-h = ['join-with left', 'mode main']
+alt-shift-j = ['join-with down', 'mode main']
+alt-shift-k = ['join-with up', 'mode main']
+alt-shift-l = ['join-with right', 'mode main']
+
+# Auto-assign apps on open — disabled for now.
+# Assign windows manually with alt-shift-1..5 instead.
+# Uncomment later for apps that always belong on a fixed workspace.
+#
+# on-window-detected = [
+#     { if.app-id = 'com.apple.finder', run = 'layout floating' },
+#     { if.app-id = 'com.apple.systempreferences', run = 'layout floating' },
+#     { if.app-id = 'com.apple.SystemSettings', run = 'layout floating' },
+#     { if.app-id = 'org.keepassxc.keepassxc', run = 'layout floating' },
+#
+#     # 1 — terminal
+#     { if.app-id = 'com.mitchellh.ghostty', run = 'move-node-to-workspace 1' },
+#     { if.app-id = 'com.apple.Terminal', run = 'move-node-to-workspace 1' },
+#
+#     # 2 — editors / IDE
+#     { if.app-id = 'com.todesktop.230313mzl4w4u92', run = 'move-node-to-workspace 2' }, # Cursor
+#     { if.app-id = 'com.microsoft.VSCode', run = 'move-node-to-workspace 2' },
+#     { if.app-id = 'com.jetbrains.datagrip', run = 'move-node-to-workspace 2' },
+#
+#     # 3 — browser
+#     { if.app-id = 'com.brave.Browser', run = 'move-node-to-workspace 3' },
+#     { if.app-id = 'com.google.Chrome', run = 'move-node-to-workspace 3' },
+#     { if.app-id = 'org.mozilla.firefox', run = 'move-node-to-workspace 3' },
+#     { if.app-id = 'company.thebrowser.Browser', run = 'move-node-to-workspace 3' }, # Arc
+#
+#     # 4 — communication
+#     { if.app-id = 'com.tinyspeck.slackmacgap', run = 'move-node-to-workspace 4' },
+#     { if.app-id = 'com.tdesktop.Telegram', run = 'move-node-to-workspace 4' },
+#     { if.app-id = 'com.hnc.Discord', run = 'move-node-to-workspace 4' },
+#
+#     # 5 — notes / misc
+#     { if.app-id = 'md.obsidian', run = 'move-node-to-workspace 5' },
+# ]

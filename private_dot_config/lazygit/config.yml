@@ -1,0 +1,56 @@
+gui:
+  nerdFontsVersion: "3"
+  expandFocusedSidePanel: true
+  # showBottomLine: false
+  filterMode: "fuzzy"
+  commandLogSize: 3
+  showRandomTip: false
+  theme:
+    activeBorderColor:
+      - '#03cafc' # Highlight active panels
+      - bold
+    inactiveBorderColor:
+      - '#89B4FA' # Inactive panels
+      # - '#313255' # Inactive panels
+    selectedLineBgColor:
+      - '#45475A' # Background of the selected line
+    optionsTextColor:
+      - '#BAC2DE' # Text color for options
+    cherryPickedCommitBgColor:
+      - '#45475A' # Background for cherry-picked commits
+    unstagedChangesColor:
+      - '#F38BA8' # Color for unstaged changes
+    stagedChangesColor:
+      - '#A6E3AF' # Color for staged changes
+    squashColor:
+      - '#FAB387' # Color for squashed commits
+    defaultFgColor:
+      - '#CDD6F4' # Default foreground color
+    defaultBgColor:
+      - '#1E1E2E' # Default background color
+    diffRenamedColor:
+      - '#F9E2AF' # Color for renamed files in diff
+    diffAddedColor:
+      - '#A6E3AF' # Color for added lines in diff
+    diffDeletedColor:
+      - '#F38BA8' # Color for deleted lines in diff
+    commitHashColor:
+      - '#74C7EC' # Color for commit hashes
+    branchColor:
+      - '#F9E2AF' # Color for branch names
+    tagColor:
+      - '#CBA6F7' # Color for tag names
+    conflictColor:
+      - '#F38BA8' # Color for conflicts
+git:
+  overrideGpg: true
+  diffRenderers:
+    - colorArg: always
+      command: delta --paging=never --features="hoopoe" --side-by-side --line-numbers --syntax-theme="TwoDark" --dark
+#  commitPrefix:
+#    - pattern: "^(\\w+-\\d+).*"
+#      replace: "$1: "
+#    - pattern: "^(\\w+)-.*"
+#      replace: "$1: "
+os:
+  editPreset: "nvim"
